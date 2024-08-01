@@ -10,19 +10,28 @@ import java.util.List;
 
 public class BasketServiceImpl implements BasketService {
 
-    private final Basket basket;
+//    private final Basket basket;
+//
+//    public BasketServiceImpl(Basket basket) {
+//        this.basket = basket;
+//    }
 
-    public BasketServiceImpl(Basket basket) {
-        this.basket = basket;
+//    @Autowired   //Можно и так инжектить
+//    public Basket basket;
+
+    private final Basket basketConfig;  //Теперь бин приходит не из контекста, а из Джава-конфига
+
+    public BasketServiceImpl(Basket basketConfig) {
+        this.basketConfig = basketConfig;
     }
 
     @Override
     public String add(List<Integer> id) {
-        return basket.add(id);
+        return basketConfig.add(id);
     }
 
     @Override
     public List<Integer> get() {
-        return basket.getItems();
+        return basketConfig.getItems();
     }
 }
